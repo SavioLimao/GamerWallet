@@ -1,0 +1,48 @@
+/* #4b4b4b
+#2a2a2a
+#00000040
+#780b0b */
+
+.filtercontainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px solid white;
+  color: white;
+  width: 20vw;
+  margin: 15px auto;
+  padding: 15px;
+  background: #00000040;
+  border-radius: 8px;
+}
+
+.filtercontainer h2 {
+  margin: 0px 0px 0px 0px;
+}
+
+.yrFilter {
+  width: 10vw;
+  max-width: 100px;
+  min-width: 80px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background-color: #780b0b;
+  color: white;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+}
+
+.yrFilter:focus {
+  outline: none;
+  border-color: white;
+  box-shadow: 0px 0px 4px white;
+}
+
+.yrFilter option {
+  background: #780b0b;
+  
+}

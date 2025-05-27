@@ -1,0 +1,83 @@
+.NewGameIn {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    justify-content: left;
+    align-items: center;
+  }
+  /* !!!Coloquei um tamanho no width para corrigir um problema de alinhamento das labels com relação ao text, então se for alterar muito o tamanho de uma delas, é melhor vir aqui e alterar!!! */
+  
+  
+  
+  .NewGameIn label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    /* display: block; */
+    /* border: 1px solid #ececec; */
+    width: 10vh;
+  }
+  
+  .NewGameIn input {
+    font: inherit;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 15rem;
+    max-width: 100%;
+  }
+/*   
+  .new-expense__actions {
+    text-align: right;
+  } */
+
+
+
+
+.NewGame {
+    background-color: #780b0b;
+    padding: 1rem;
+    margin: 2rem auto;
+    /* width: 50rem; */
+    max-width: 60vw;
+    min-width: 40vw;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 1px 8px #00000040;
+  }
+
+  .NewGameACT {
+    /* border: 1px solid #ececec; */
+    width: 100%;
+    display: flex;
+    justify-content: end;
+  }
+  
+  .NewGameACT button{
+    /* font: inherit; */
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border: 1px solid #ececec;
+    background-color: #2a2a2a;
+    color: white;
+    border-radius: 12px;
+    margin-right: 1rem;
+    display: flex;
+  }
+  
+  .NewGameACT button:hover,
+  .NewGameACT button:active {
+    border: 1px solid #8b8b8b;
+    background-color: #515151;
+  }
+  
+  /* .NewGameACT.alternative {
+    color: #220131;
+    border-color: transparent;
+    background-color: transparent;
+  } */
+  
+  .NewGameACT.alternative:hover,
+  .NewGameACT.alternative:active {
+    background-color: #ddb3f8;
+  }
