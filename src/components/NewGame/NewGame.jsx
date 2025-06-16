@@ -14,7 +14,7 @@ export default function NewGame(props) {
 
   // Valor
   const PriceChangeHandler = ({ target }) => {
-    Number(setNPrice(target.value)).toFixed(2);
+    Number(setNPrice(target.value));
   };
 
   //   Data

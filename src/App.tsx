@@ -9,58 +9,68 @@ const InitGames = [
   {
     id: "01",
     Name: "Postal 2",
-    Dat: new Date(2010, 7, 14),
-    Price: Number(24.99).toFixed(2),
+    Dat: new Date(2023, 7, 14),
+    Price: 24.99,
   },
   {
     id: "02",
     Name: "Cyberpunk 2077",
-    Dat: new Date(2020, 11, 10),
-    Price: Number(199.9).toFixed(2),
+    Dat: new Date(2025, 11, 10),
+    Price: 199.9,
   },
   {
     id: "03",
     Name: "The Witcher 3",
-    Dat: new Date(2015, 4, 19),
-    Price: Number(79.9).toFixed(2),
+    Dat: new Date(2024, 4, 19),
+    Price: 79.99,
   },
   {
     id: "04",
     Name: "Red Dead Redemption 2",
-    Dat: new Date(2018, 9, 26),
-    Price: Number(249.9).toFixed(2),
+    Dat: new Date(2024, 9, 26),
+    Price: 249.99,
   },
   {
     id: "05",
     Name: "Stardew Valley",
-    Dat: new Date(2016, 1, 26),
-    Price: Number(24.9).toFixed(2),
+    Dat: new Date(2023, 1, 26),
+    Price: 24.99,
   },
 ];
 function App() {
-  const [UpdatedGames, setUpdatedGames] = useState(InitGames);
+  const [games, setGames] = useState(() => {
+    const saved = localStorage.getItem("games");
+    if (saved) {
+      return JSON.parse(saved).map((game) => ({
+        ...game,
+        Dat: new Date(game.Dat),
+      }));
+    }
+    return InitGames;
+  });
 
-  const SaveNewGameHandler = (NewGameData) => {
-    const Game = {
-      ...NewGameData,
-      id: (UpdatedGames.length + 1).toString(),
-    };
-    setUpdatedGames([Game, ...UpdatedGames]);
-    console.log(UpdatedGames);
+  const [slcYear, setSlcYear] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("games", JSON.stringify(games));
+  }, [games]);
+
+  const saveNewGameHandler = (newGameData) => {
+    setGames([{ ...newGameData, id: (games.length + 1).toString() }, ...games]);
+    // console.log(games);
   };
+
+  const filteredGames = slcYear
+    ? games.filter((g) => g.Dat.getFullYear().toString() === slcYear)
+    : games;
 
   return (
     <>
-      <NewGame onSavaNewGame={SaveNewGameHandler} />
-      <GamesFilter />
-      <GameChart Games={UpdatedGames}/>
-      {UpdatedGames.map((Game) => (
-        <GameCard
-          key={Game.id}
-          Name={Game.Name}
-          Dat={Game.Dat}
-          Price={Game.Price}
-        />
+      <NewGame onSavaNewGame={saveNewGameHandler} />
+      <GamesFilter slcYear={slcYear} onChangeYear={setSlcYear} />
+      <GameChart Games={filteredGames} />
+      {filteredGames.map((g) => (
+        <GameCard key={g.id} Name={g.Name} Dat={g.Dat} Price={g.Price} />
       ))}
     </>
   );
