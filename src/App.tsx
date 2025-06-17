@@ -4,7 +4,7 @@ import GameCard from "./components/Games/GameCard";
 import { useState, useEffect } from "react";
 import GamesFilter from "./components/GamesFilter/GamesFilter.jsx";
 import GameChart from "./components/Chart/GameChart.jsx";
-import Modal from "./components/Modal/Modal.js";
+import DeletBTN from "./components/DeleteBTN/DeleteBTN";
 
 const InitGames = [
   {
@@ -65,17 +65,14 @@ function App() {
     ? games.filter((g) => g.Dat.getFullYear().toString() === slcYear)
     : games;
 
-  const [modalHand, setModalHand] = useState(false);
-  
-  const EditBTNHandler = () => {
-    setModalHand(true);
-    console.log(modalHand)
+  const DeleteBTNHandler = () => {
+  console.log('deleted');
   };
 
   return (
     <>
-      <Modal />
-      <NewGame onSavaNewGame={saveNewGameHandler} />
+      <DeletBTN />
+      <NewGame onSavaNewGame={saveNewGameHandler} btnConfirm="Adicionar Game" />
       <GamesFilter slcYear={slcYear} onChangeYear={setSlcYear} />
       <GameChart Games={filteredGames} />
       {filteredGames.map((g) => (
@@ -84,10 +81,9 @@ function App() {
           Name={g.Name}
           Dat={g.Dat}
           Price={g.Price}
-          onClick={EditBTNHandler}
+          onClick={DeleteBTNHandler}
         />
       ))}
-
     </>
   );
 }

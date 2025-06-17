@@ -1,0 +1,16 @@
+/* .modal-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.707);
+} */
+
+.Delete-container {
+  border: 2px solid black;
+}

@@ -77,7 +77,10 @@ export default function NewGame(props) {
               />
             </div>
             <div className="NewGameACT">
-              <button type="submit">Adicionar game</button>
+              <button type="submit">{props.btnConfirm}</button>
+              {props.btnCancel && (
+                <button type="submit">{props.btnCancel}</button>
+              )}
             </div>
           </div>
         </form>
