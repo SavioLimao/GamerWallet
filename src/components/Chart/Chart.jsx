@@ -3,7 +3,7 @@ import ChartBar from "./ChartBar";
 export default function Chart(props) {
   const dataGValues = props.dataGs.map(dataG => dataG.value)
   const totalMaximum = Math.max(...dataGValues)
-  console.log(totalMaximum)
+  // console.log(totalMaximum)
   return (
     <>
       <div className="chart">
