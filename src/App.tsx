@@ -57,6 +57,7 @@ function App() {
   }, [games]);
 
   const saveNewGameHandler = (newGameData) => {
+
     setGames([{ ...newGameData, id: (games.length + 1).toString() }, ...games]);
     // console.log(games);
   };
@@ -65,8 +66,10 @@ function App() {
     ? games.filter((g) => g.Dat.getFullYear().toString() === slcYear)
     : games;
 
-  const DeleteBTNHandler = () => {
-  console.log('deleted');
+  const DeleteBTNHandler = (id) => {
+  if(confirm("Tem certeza que deseja apagar?") == true) {
+  setGames((prevGames) => prevGames.filter((g) => g.id !== id))
+} else {return}
   };
 
   return (
@@ -78,15 +81,19 @@ function App() {
       <NewGame onSavaNewGame={saveNewGameHandler} btnConfirm="Adicionar Game" />
       <GamesFilter slcYear={slcYear} onChangeYear={setSlcYear} />
       <GameChart Games={filteredGames} />
-      {filteredGames.map((g) => (
-        <GameCard
-          key={g.id}
-          Name={g.Name}
-          Dat={g.Dat}
-          Price={g.Price}
-          onClick={DeleteBTNHandler}
-        />
-      ))}
+      {filteredGames.length === 0 ? (
+  <p style={{ textAlign: "center" }}>Nenhum jogo encontrado para esse ano.</p>
+) : (
+  filteredGames.map((g) => (
+    <GameCard
+      key={g.id}
+      Name={g.Name}
+      Dat={g.Dat}
+      Price={g.Price}
+      onClick={() => DeleteBTNHandler(g.id)}
+    />
+  ))
+)}
     </>
   );
 }

@@ -27,11 +27,15 @@ export default function NewGame(props) {
 
   const SubmitHandler = (event) => {
     event.preventDefault()
+    if (!NName || !NPrice || !NDat) {
+      alert("Todos os campos são obrigatórios")
+      return
+    } else {
     const GameData = {
         Name: NName,
         Price: NPrice,
         Dat: new Date (NDat)
-    }
+    }}
     // console.log(GameData)
     props.onSavaNewGame(GameData)
     setNDat('')
