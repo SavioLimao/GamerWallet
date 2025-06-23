@@ -3,10 +3,9 @@ import "./NewGame.css";
 
 // Nome
 export default function NewGame(props) {
-    
-    const [NName, setNName] = useState("");
-    const [NPrice, setNPrice] = useState("");
-    const [NDat, setNDat] = useState("");
+  const [NName, setNName] = useState("");
+  const [NPrice, setNPrice] = useState("");
+  const [NDat, setNDat] = useState(new Date().toISOString().split("T")[0]);
 
   const NameChangeHandler = (event) => {
     setNName(event.target.value);
@@ -23,27 +22,26 @@ export default function NewGame(props) {
     setNDat(event.target.value);
   };
 
-//   Submit
+  //   Submit
 
   const SubmitHandler = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     if (!NName || !NPrice || !NDat) {
-      alert("Todos os campos são obrigatórios")
-      return
+      alert("Todos os campos são obrigatórios");
+      return;
     } else {
-    const GameData = {
+      const GameData = {
         Name: NName,
         Price: NPrice,
-        Dat: new Date (NDat)
-    }}
-    // console.log(GameData)
-    props.onSavaNewGame(GameData)
-    setNDat('')
-    setNName('')
-    setNPrice('')
-  }
-  
-
+        Dat: new Date(NDat),
+      };
+      // console.log(GameData)
+      props.onSavaNewGame(GameData);
+      setNDat(new Date().toISOString().split("T")[0]);
+      setNName("");
+      setNPrice("");
+    }
+  };
 
   return (
     <>
@@ -74,8 +72,8 @@ export default function NewGame(props) {
               <label>Data</label>
               <input
                 type="date"
-                placeholder="2010/01/01"
-                min="2010-01-01"
+                placeholder="2025/01/01"
+                min="2023-01-01"
                 value={NDat}
                 onChange={DatChangeHandler}
               />
