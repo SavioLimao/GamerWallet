@@ -26,7 +26,7 @@ export default function NewGame(props) {
 
   const SubmitHandler = (event) => {
     event.preventDefault();
-    if (!NName || !NPrice || !NDat) {
+    if (!NName.trim() || !NPrice || !NDat) {
       alert("Todos os campos são obrigatórios");
       return;
     } else {
