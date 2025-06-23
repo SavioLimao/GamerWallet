@@ -71,7 +71,10 @@ function App() {
 
   return (
     <>
-      <DeletBTN />
+    <div className="title-container">
+      <h1 className="title">Gamer Wallet</h1>
+    </div>
+    <h2>Seu controle de finanças gamer</h2>
       <NewGame onSavaNewGame={saveNewGameHandler} btnConfirm="Adicionar Game" />
       <GamesFilter slcYear={slcYear} onChangeYear={setSlcYear} />
       <GameChart Games={filteredGames} />
